@@ -1,0 +1,6 @@
+= form_tag("/page/edit", id: "admin-dashboard", role: "form", :html => { :method => :post, :multipart => true }) do
+	%label Email Id
+	- if @email.nil?
+		%input{type: "checkbox", name: "fleet_involved", id: "fleet_involved", value: 'Enter Email Id'}
+	- else
+		%input{type: "checkbox", name: "fleet_involved", id: "fleet_involved", value: @email}

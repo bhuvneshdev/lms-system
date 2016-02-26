@@ -1,0 +1,29 @@
+%h1 Listing products
+%table
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Image url
+      %th Price
+      %th Category
+      %th Subcategory
+      %th
+      %th
+      %th
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.title
+        %td= product.description
+        %td= product.image_url
+        %td= product.price
+        %td= product.category
+        %td= product.subcategory
+        %td= link_to 'Show', product
+        %td= link_to 'Edit', edit_product_path(product)
+        %td= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+          %a{:href => "/cart/#{product.id}"} Add to Cart
+%br/
+= link_to 'New Product', new_product_path

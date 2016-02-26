@@ -1,0 +1,21 @@
+= form_tag("/page/edit", id: "admin-dashboard", role: "form", :html => { :method => :post, :multipart => true }) do
+  %label Email ID
+  - binding.pry
+  - if @user.email.blank?
+    %input{type: "text", name: "email", id: "email", value: 'Enter Email Id'}
+  - else
+    %input{type: "text", name: "email", id: "email", value: @user.email}
+  %br/
+  %label Preferences
+  - if @user.preferences.blank?
+    = select_tag :preferences, options_for_select(["Select preferences"] + ['Computer Science','Arts','Engineering']), :class=>"size-16", :style=>"width: 210px;"
+  - else
+    = select_tag :preferences, options_for_select([@user.preferences] + ['Computer Science','Arts','Engineering']), :class=>"size-16", :style=>"width: 210px;"
+  %br/
+  %label Role
+  - if @user.role.blank?
+    = select_tag :role, options_for_select(["Select role"] + ['1','2','3']), :class=>"size-16", :style=>"width: 210px;"
+  - else
+    = select_tag :role, options_for_select([@user.role.to_s] + ['1','2','3']), :class=>"size-16", :style=>"width: 210px;"
+  %div.submit-button
+    = submit_tag 'Submit' , class: 'btn bth-primary', id: 'submit'

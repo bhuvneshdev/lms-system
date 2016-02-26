@@ -1,0 +1,21 @@
+%h1 Your Cart
+- if @cart.empty?
+  %p Your Cart is Empty
+- else
+  = link_to 'Empty Your Cart', cart_clear_path
+%br/
+%br/
+%br/
+%ul
+  - total =0
+  - @cart.each do |id,quantity|
+    - product = Product.find(id)
+    %li
+      = link_to product.title, product
+      %p= product.description
+      %p= number_to_currency(product.price,:unit =>'$')
+      %p
+        Quantity: #{quantity}
+    - total += quantity * product.price
+  %p
+    %b= number_to_currency(total, :unit => '$')

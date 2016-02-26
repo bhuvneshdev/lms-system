@@ -1,0 +1,28 @@
+%p#notice= notice
+%p
+  %strong Title:
+  = @book.title
+%p
+  %strong Description:
+  = @book.description
+%p
+  %strong Url:
+  = @book.url
+%p
+  %strong Image url:
+  = @book.image_url
+%p
+  %strong Price:
+  = @book.price
+%p
+  %strong Category:
+  = @book.category
+%p
+  %strong Subcategory:
+  = @book.subcategory
+%p
+  %strong Rating:
+  = @book.rating
+= link_to 'Edit', edit_book_path(@book)
+|
+= link_to 'Back', books_path
