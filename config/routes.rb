@@ -14,13 +14,17 @@ LmsSystem::Application.routes.draw do
   get "page/about"
   get "page/faqs"
   get "page/contact"
-  get "page/edit"
-  post "page/edit"
+  get "page/edit" => "page#edit"
+  post "page/edit" => "page#edit"
+  post "page/:id/edit" => "page#edit"
 
-  get "page/search_result"
-  post "page/search_result"
+  get "search_result" => "books#search_result"
+  post "search_result" => "books#search_result"
 
   get "page/edit1"
+
+  get "/books/:id/details" => "books#details"
+  post "/books/:id/details" => "books#details"
 
   root 'page#home'
   # The priority is based upon order of creation: first created -> highest priority.

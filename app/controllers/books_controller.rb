@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
-
   respond_to :html
 
   def index
@@ -20,16 +19,24 @@ class BooksController < ApplicationController
   def edit
   end
 
+  def details
+    @book = Book.find(params[:id])
+  end
+
   def search_result
+    binding.pry
     if !request.post?
-      if !current_user.nil?
-        @book = Book.where("category = #{current_user.preferences}").limit(10)
+      if !current_user.nil? && !current_user.preferences.blank?
+        @book = Book.where("category = '#{current_user.preferences}'").limit(10)
       else
         @book = Book.all.limit(10)
       end
+      if @book.blank?
+        @book = Book.all.limit(10)
+      end
     else
-      if !params['search_input'].blank?
-        @book = Book.where("title like '%#{search_input}%' or category like '%#{search_input}%' or subcategory like '%#{search_input}%' or author_name like '%#{search_input}%'")
+      if !params['search'].blank?
+        @book = Book.where("title like '%#{params['search']}%' or category like '%#{params['search']}%' or subcategory like '%#{params['search']}%'")
       end
     end
   end

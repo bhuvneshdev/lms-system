@@ -1,0 +1,16 @@
+%head
+	%title Simple Search Form
+= form_tag(search_result_path, :method => "post", class: "navbar-form", id: "search-form") do
+	= text_field_tag :search, params[:search], class: "span2", placeholder: "Search Articles"
+	%button.btn{:type => "submit"}
+		%i.icon-search
+-@book.each do |article|
+	.article
+		%h1.article-title
+			= link_to article.title, article
+		%p.article-content
+			= article.description
+		-if !article.image_url.blank?
+			- url = "/books/#{article.id}/details"
+			%a{href: url} 
+				%img{:src => asset_path(article.image_url)}/

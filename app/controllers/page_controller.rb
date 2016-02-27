@@ -24,19 +24,15 @@ class PageController < ApplicationController
 
   def edit
   	if !request.post?
-	  	@preferences = ['Computer Science','Arts']
-		if !params[:id].blank?
-	  		@user = User.find(params[:id])
-	  	else
-	  		@user = current_user
-	  	end
+	  	@user = current_user
 	else
-		@user = User.where(email: params['email']).last
-		if params['preferences'] != 'Select preferences'
-			@user.preferences = params['preferences']
+		user_basic = params['user_basic']
+		@user = User.where(email: user_basic['email']).last
+		if user_basic['preferences'] != 'Select preferences'
+			@user.preferences = user_basic['preferences']
 		end
-		if params['role'] != 'Select role'
-			@user.role = params['role']
+		if user_basic['role'] != 'Select role'
+			@user.role = user_basic['role']
 		end
 		@user.save
 	end
@@ -44,7 +40,6 @@ class PageController < ApplicationController
   end
 
   def update
-  	binding.pry
   	if !params['user']['id'].blank?
   		@user = User.find(params[:id])
   	else

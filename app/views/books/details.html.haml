@@ -1,0 +1,11 @@
+= simple_form_for @book, :url => url_for(:action => 'details', :controller => 'books'), as: 'user_basic', method: :post,wrapper_mappings: {check_boxes: :vertical_radio_and_checkboxes,radio_buttons: :vertical_radio_and_checkboxes,file: :vertical_file_input,boolean: :vertical_boolean}  do |f|
+	= @book.title
+	%br/
+	= @book.description
+	%br/
+	%a{href: @book.url, target:'_blank'}
+		Download
+	= f.input :rating,
+	collection: ['1','2','3','4','5'],
+	  wrapper: :vertical_radio_and_checkboxes
+	= f.button :submit

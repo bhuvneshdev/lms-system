@@ -1,5 +1,7 @@
-%h1 Editing book
-= render 'form'
-= link_to 'Show', @book
-|
-= link_to 'Back', books_path
+- if !(current_user.role == 'admin')
+	%h1 User doesn't have enough permission to view this page
+- else
+	%h1 Editing book
+	= render 'form'
+	= link_to 'Show', @book
+	= link_to 'Back', books_path
