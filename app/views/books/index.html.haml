@@ -2,13 +2,13 @@
   %h1 User doesn't have enough permission to view this page
 - else
   %h1 Listing books
-  %table
+  %table.books-list
     %thead
       %tr
         %th Title
         %th Description
         %th Url
-        %th Image url
+        %th Image url jkehwg
         %th Price
         %th Category
         %th Subcategory
@@ -31,4 +31,5 @@
           %td= link_to 'Edit', edit_book_path(book)
           %td= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }
   %br/
-  = link_to 'New Book', new_book_path
+  .new-book-box
+    = link_to 'New Book', new_book_path, :class => "new-book-btn"

@@ -7,18 +7,9 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    - if user_signed_in?
-      = link_to "Sign out", destroy_user_session_path, method: :delete
-    - else
-      = link_to "Sign in", new_user_session_path
-      = link_to "Sign up", new_user_registration_path
-    = link_to "Home", root_path
-    = link_to "Add Books", books_path
-    = link_to "About", page_about_path
-    = link_to "Contact Us", page_contact_path
-    = link_to "Faqs", page_faqs_path
-    = link_to "User Prefernces", page_edit_path
-    = link_to "Library", search_result_path
-    %p.notice= notice
-    %p.alert= alert
-    = yield
+    = render :partial => "/layouts/header"
+    .content
+      %p.notice= notice
+      %p.alert= alert
+      = yield
+    = render :partial => '/layouts/footer'
