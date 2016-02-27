@@ -5,12 +5,11 @@
 	%button.btn{:type => "submit"}
 		%i.icon-search
 -@book.each do |article|
-	.article
-		%h1.article-title
-			= link_to article.title, article
-		/ %p.article-content
-		/ 	= article.description
-		-if !article.image_url.blank?
-			- url = "/books/#{article.id}/details"
-			%a{href: url} 
-				%img{:src => asset_path(article.image_url)}/
+	.col-md-3
+		.article
+			%h1.article-title
+				= link_to article.title, article
+			-if !article.image_url.blank?
+				- url = "/books/#{article.id}/details"
+				%a.article-img-href{href: url} 
+					%img.article-img{:src => asset_path(article.image_url)}/
