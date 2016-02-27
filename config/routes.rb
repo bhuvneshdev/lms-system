@@ -7,13 +7,16 @@ LmsSystem::Application.routes.draw do
   get "/cart/:id" => "cart#add"
 
   resources :products
-  resources :page
+  # resources :page
 
-  get "page/home"
+  # get "page/home"
+  # get "page/about"
+  # get "page/faqs"
+  # get "page/contact"
 
-  get "page/about"
-  get "page/faqs"
-  get "page/contact"
+  get "page/about" => "page#about" 
+  get "page/faqs" => "page#faqs"
+  get "page/contact" => "page#contact"
   get "page/edit" => "page#edit"
   post "page/edit" => "page#edit"
   post "page/:id/edit" => "page#edit"

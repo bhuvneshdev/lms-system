@@ -12,15 +12,12 @@ class PageController < ApplicationController
   end
 
   def contact
+    # render "contact"
   end
 
   def show
   end
 
-  def edit1
-  	@user = current_user
-  	binding.pry
-  end
 
   def edit
   	if !request.post?

@@ -24,7 +24,6 @@ class BooksController < ApplicationController
   end
 
   def search_result
-    binding.pry
     if !request.post?
       if !current_user.nil? && !current_user.preferences.blank?
         @book = Book.where("category = '#{current_user.preferences}'").limit(10)
