@@ -8,4 +8,5 @@
 	= f.input :rating,
 	collection: ['1','2','3','4','5'],
 	  wrapper: :vertical_radio_and_checkboxes
-	= f.button :submit
+	.update-book-box
+		= f.button :submit, :class => "update-book-btn"

@@ -1,0 +1,19 @@
+.header
+	.header-top
+		.header-title
+			LMS SYSTEM
+		.header-login
+			- if user_signed_in?
+				= link_to "Sign out", destroy_user_session_path, method: :delete
+			- else
+				= link_to "Sign in", new_user_session_path
+				= link_to "Sign up", new_user_registration_path
+	.header-bottom
+		.header-left
+			= link_to "Home", root_path
+			= link_to "Add Books", books_path
+			= link_to "User Preferences", page_edit_path
+		.header-right
+			= link_to "About", page_about_path
+			= link_to "Faqs", page_faqs_path
+			= link_to "Contact Us", page_contact_path
