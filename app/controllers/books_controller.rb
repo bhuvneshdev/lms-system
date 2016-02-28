@@ -21,6 +21,11 @@ class BooksController < ApplicationController
 
   def details
     @book = Book.find(params[:id])
+    if request.post?
+      rating = params['user_basic']['rating']
+      @book.rating = rating
+      @book.save
+    end
   end
 
   def search_result
