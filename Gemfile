@@ -12,7 +12,7 @@ gem 'youtube_addy'
 
 gem 'mysql2', '~> 0.3.18'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 gem "sentimentalizer"
 gem 'rename'
 gem 'sentimental'
