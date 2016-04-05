@@ -1,11 +1,15 @@
 = simple_form_for @user, :url => url_for(:action => 'edit', :controller => 'page'), as: 'user_basic', method: :post,wrapper_mappings: {check_boxes: :vertical_radio_and_checkboxes,radio_buttons: :vertical_radio_and_checkboxes,file: :vertical_file_input,boolean: :vertical_boolean}  do |f|
-  = f.input :email, placeholder: 'Enter email', wrapper_html: { class: 'username user-pref-email' }
+  -if current_user.role != 'admin'
+    = f.input :email, placeholder: 'Enter email', disabled: true, hint: 'You cannot change your email.',  wrapper_html: { class: 'username user-pref-email'}
+  -else
+    = f.input :email, placeholder: 'Enter email', hint: 'You cannot change your email.',  wrapper_html: { class: 'username user-pref-email'}
   = f.input :preferences,
-    collection: ['com science','arts'],
+    collection: ['Computer Science','Arts','Geography','Mediciene'],
       wrapper: :vertical_radio_and_checkboxes, wrapper_html: { class: 'user-pref-opt' }
-  = f.input :role,
-    collection: ['student','faculty','admin'],
-      wrapper: :vertical_radio_and_checkboxes, wrapper_html: { class: 'user-pref-role' }
+  - if current_user.role == 'admin'
+    = f.input :role,
+      collection: ['student','faculty','admin'],
+        wrapper: :vertical_radio_and_checkboxes, wrapper_html: { class: 'user-pref-role' }
   .user-pref-box
     = f.button :submit, :class => 'user-pref-btn'
 / = form_tag("/page/edit", id: "admin-dashboard", role: "form", :html => { :method => :post, :multipart => true }) do

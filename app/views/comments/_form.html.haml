@@ -1,0 +1,19 @@
+= form_for([@post, @post.comments.build]) do |f|
+	%p
+		= f.label "name"
+		%br/
+		= f.text_field :name
+	%p
+		= f.label "email"
+		%br/
+		- if !current_user.nil?
+			= f.text_field :email_id, value: current_user.email
+		- else
+			= f.text_field :email_id
+	%p
+		= f.label "body"
+		%br/
+		= f.text_area :feedback
+	%br/
+	%p
+		= f.submit

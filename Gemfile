@@ -8,12 +8,16 @@ gem 'haml-rails'
 gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem 'youtube_addy'
 
 gem 'mysql2', '~> 0.3.18'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-
+gem "sentimentalizer"
 gem 'rename'
+gem 'sentimental'
+gem "letter_opener"
+gem 'social-share-button'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'

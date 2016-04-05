@@ -1,7 +1,15 @@
 %head
 	%title Simple Search Form
 = form_tag(search_result_path, :method => "post", class: "navbar-form", id: "search-form") do
+	- if session['sorting'].nil?
+		= select_tag("sorting",options_for_select([['','0'],['Highly Rated','1'],['Most viewed','2']],'0'))
+	- else
+		= select_tag("sorting",options_for_select([['','0'],['Highly Rated','1'],['Most viewed','2']],session['sorting']))
 	= text_field_tag :search, params[:search], class: "span2", placeholder: "Search Books"
+	- if session['type'].nil?
+		= select_tag("type", options_for_select([['All Types', '0'],['Books', '1'],['Videos', '2'],['WebLinks','3']], '0'))
+	- else
+		= select_tag("type", options_for_select([['All Types', '0'],['Books', '1'],['videos', '2'],['WebLinks','3']], session['type']))
 	%button.btn{:type => "submit"}
 		%i.icon-search
 			Search
@@ -9,7 +17,11 @@
 	.col-md-3
 		.article
 			%h1.article-title
-				= link_to article.title, article.url, :target => "_blank"
+				- begin
+					- rating = BooksRating.over_all_rating(article.id).to_s
+					- title = (article.title.to_s+"("+rating+")")
+				- rescue
+				= link_to title, article.url, :target => "_blank"
 			-if !article.image_url.blank?
 				- url = "/books/#{article.id}/details"
 				%a.article-img-href{href: url} 

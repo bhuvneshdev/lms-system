@@ -7,12 +7,17 @@ LmsSystem::Application.routes.draw do
   get "/cart/:id" => "cart#add"
 
   resources :products
+  resources :posts do
+    resources :comments
+  end
   # resources :page
 
   # get "page/home"
   # get "page/about"
   # get "page/faqs"
   # get "page/contact"
+  get "create_comment" => "books#create_comment"
+  post "create_comment" => "books#create_comment"
 
   get "page/about" => "page#about" 
   get "page/faqs" => "page#faqs"
@@ -20,6 +25,9 @@ LmsSystem::Application.routes.draw do
   get "page/edit" => "page#edit"
   post "page/edit" => "page#edit"
   post "page/:id/edit" => "page#edit"
+
+  post "posts/:id/approve" => "posts#approve"
+  get "posts/:id/approve" => "posts#approve"
 
   get "search_result" => "books#search_result"
   post "search_result" => "books#search_result"

@@ -1,0 +1,32 @@
+#main_content
+	#post_content
+		%h1.title
+			= @post.title
+		%h2
+		=raw YouTubeAddy.youtube_embed_url("https://www.youtube.com/watch?v=vWaRiD5ym74",420,315)
+		%p.date
+			Submitted
+			= time_ago_in_words(@post.created_at)
+			Ago 
+			| 
+			= link_to 'Edit' ,edit_post_path(@post)
+			|
+			= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: 'Are you sure'}
+			|
+			- if @post.approved
+				= link_to 'Decline', action: 'approve' #{}"posts/approve"
+			- else
+				= link_to 'Approve', action: 'approve' #{}"posts/approve"
+		%p.body
+			= @post.body
+
+		#comments
+			%header
+				= @post.comments.count
+				Comments
+				= render @post.comments
+			%h1
+				Add a comment:
+				= render "comments/form"
+= social_share_button_tag(@post.title)
+

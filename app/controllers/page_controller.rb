@@ -20,11 +20,14 @@ class PageController < ApplicationController
 
 
   def edit
-  	if !request.post?
+  if !request.post?
 	  	@user = current_user
 	else
 		user_basic = params['user_basic']
 		@user = User.where(email: user_basic['email']).last
+    if @user.nil?
+      @user = current_user
+    end
 		if user_basic['preferences'] != 'Select preferences'
 			@user.preferences = user_basic['preferences']
 		end

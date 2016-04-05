@@ -1,12 +1,73 @@
-= simple_form_for @book, :url => url_for(:action => 'details', :controller => 'books'), as: 'user_basic', method: :post,wrapper_mappings: {check_boxes: :vertical_radio_and_checkboxes,radio_buttons: :vertical_radio_and_checkboxes,file: :vertical_file_input,boolean: :vertical_boolean}  do |f|
-	= @book.title
+= simple_form_for (@book), :url => url_for(:action => 'details', :controller => 'books'), as: 'user_basic', method: :post  do |f|
+	- if current_user.role != 'admin'
+		= f.input :title, disabled: true,  wrapper_html: { class: 'username user-pref-email'}
+		= f.input :author_name, disabled: true,  wrapper_html: { class: 'username user-pref-email'}
+	- else
+		= f.input :title, wrapper_html: { class: 'username user-pref-email'}
+		= f.input :author_name, wrapper_html: { class: 'username user-pref-email'}
+	/ = @book.title
+	/ %br/
+	/ = @book.description
+	/ %br/
+	/ = f.input :rating, :as => :radio_buttons, :label => "Theme:", :collection =>  [ '1', '2', '3', '4', '5' ], wrapper: :vertical_radio_and_checkboxes
+	= f.label "Was the book userful?"
+	= select_tag("rating1", options_for_select([['1', '1'],['2', '2'],['3','3'],['4','4'],['5','5']], @book.rating1))
 	%br/
-	= @book.description
+	= f.label "Did the book serve your purpose?"
+	= select_tag("rating2", options_for_select([['1', '1'],['2', '2'],['3','3'],['4','4'],['5','5']], @book.rating2))
+	%br/
+	= f.label "Was the book easy to understand?"
+	= select_tag("rating3", options_for_select([['1', '1'],['2', '2'],['3','3'],['4','4'],['5','5']], @book.rating3))
+	%br/
+	= f.label "Would you recommend this book to a friend?"
+	= select_tag("rating4", options_for_select([['1', '1'],['2', '2'],['3','3'],['4','4'],['5','5']], @book.rating4))
+	%br/
+	= f.label "How would you rate this book overall?"
+	= select_tag("rating5", options_for_select([['1', '1'],['2', '2'],['3','3'],['4','4'],['5','5']], @book.rating5))
+	%br/
+	= fields_for @book do |fa|
+		= fa.label "Over All Rating"
+		= @overall_rating
+	%br/
 	%br/
 	%a{href: @book.url, target:'_blank'}
-		Download
-	= f.input :rating,
-	collection: ['1','2','3','4','5'],
-	  wrapper: :vertical_radio_and_checkboxes
+		Download Book
 	.update-book-box
 		= f.button :submit, :class => "update-book-btn"
+	%head
+		Comments
+	%br/
+	#main_content
+		#post_content
+			- if !@comments.nil?
+				- @comments.each do |comm|
+					%li{:id => "micropost-#{comm.id}"}
+						Singh
+						%p.body
+							#{comm.feedback}
+						%p.date
+							Posted #{time_ago_in_words(comm.created_at)} ago.
+			%br/
+			%br/
+			= text_area_tag(:comment,nil, cols: "30", rows: "10")
+			%br/
+			= submit_tag("Submit")
+	/ - if !@comments.nil?
+	/ 	- @comments.each do |comm|
+	/ 		/ = comm.feedback
+	/ 		/ %br/
+	/ 		%li{:id => "micropost-#{comm.id}"}
+	/ 			Singh
+	/ 			%span.user
+	/ 				- u = User.find(comm.user_id)
+	/ 				/ #{comm.feedback}
+	/ 				/ / = link_to micropost.user.name, micropost.user
+	/ 			%span.content
+	/ 				#{comm.feedback}
+	/ 			%span.timestamp
+	/ 				Posted #{time_ago_in_words(comm.created_at)} ago.
+	/ %br/
+	/ %br/
+	/ = text_area_tag(:comment,nil, cols: "30", rows: "10")
+	/ %br/
+	/ = submit_tag("Submit")

@@ -2,7 +2,6 @@ class CartController < ApplicationController
 
 	before_action :authenticate_user!, except: [:index]
 	def add
-		binding.pry
 		id = params[:id]
 		if session[:cart] then
 			cart = session[:cart]
