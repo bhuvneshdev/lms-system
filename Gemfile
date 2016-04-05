@@ -18,6 +18,8 @@ gem 'rename'
 gem 'sentimental'
 gem "letter_opener"
 gem 'social-share-button'
+gem 'puma'
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
