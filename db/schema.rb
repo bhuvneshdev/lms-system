@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160405200043) do
+ActiveRecord::Schema.define(version: 20160406091614) do
 
   create_table "blogit_comments", force: true do |t|
     t.string   "name",       null: false
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 20160405200043) do
     t.integer  "rating3",     default: 0
     t.integer  "rating4",     default: 0
     t.integer  "rating5",     default: 0
+    t.string   "type"
+    t.string   "sub_type"
   end
 
   create_table "books_ratings", force: true do |t|
@@ -92,8 +94,10 @@ ActiveRecord::Schema.define(version: 20160405200043) do
     t.datetime "updated_at"
     t.text     "image_url"
     t.text     "video_url"
-    t.boolean  "approved",   default: false
+    t.boolean  "approved",     default: false
     t.integer  "user_id"
+    t.string   "category"
+    t.string   "sub_category"
   end
 
   create_table "products", force: true do |t|

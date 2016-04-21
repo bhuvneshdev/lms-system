@@ -1,0 +1,14 @@
+!!!
+%html
+	%head
+		%meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+	%body
+		%h1
+			Hi,
+		%p
+			Please find below the post in which needs your approval.
+		%p
+			%ul
+				- Post.where(id: @posts).each do |post|
+					%li
+						= link_to post.title , 'http://localhost:3000/posts/'+ post.id.to_s

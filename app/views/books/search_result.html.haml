@@ -1,28 +1,41 @@
+.blog-box
+	= link_to "Blog", posts_path, :class => "blog-btn"
+%br/
+%br/
 %head
 	%title Simple Search Form
 = form_tag(search_result_path, :method => "post", class: "navbar-form", id: "search-form") do
 	- if session['sorting'].nil?
-		= select_tag("sorting",options_for_select([['','0'],['Highly Rated','1'],['Most viewed','2']],'0'))
+		= select_tag("sorting",options_for_select([['Sorting','0'],['Highly Rated','1'],['Most viewed','2']],'0'))
 	- else
-		= select_tag("sorting",options_for_select([['','0'],['Highly Rated','1'],['Most viewed','2']],session['sorting']))
+		= select_tag("sorting",options_for_select([['Sorting','0'],['Highly Rated','1'],['Most viewed','2']],session['sorting']))
 	= text_field_tag :search, params[:search], class: "span2", placeholder: "Search Books"
 	- if session['type'].nil?
 		= select_tag("type", options_for_select([['All Types', '0'],['Books', '1'],['Videos', '2'],['WebLinks','3']], '0'))
 	- else
 		= select_tag("type", options_for_select([['All Types', '0'],['Books', '1'],['videos', '2'],['WebLinks','3']], session['type']))
+	- if session['sub_type'].nil?
+		= select_tag("sub_type", options_for_select([['Content Types', '0'],['textbook ', 'textbook'],['paper', 'paper'],['newspaper_article','newspaper_article'],['literature_survey','literature_survey'],['journal','journal']], '0'))
+	- else
+		= select_tag("sub_type", options_for_select([['Content Types', '0'],['textbook ', '1'],['paper', '2'],['newspaper_article','3'],['literature_survey','4'],['journal','5']], session['sub_type']))
 	%button.btn{:type => "submit"}
 		%i.icon-search
 			Search
 -@book.each do |article|
-	.col-md-3
+	.col-md-2
 		.article
 			%h1.article-title
 				- begin
 					- rating = BooksRating.over_all_rating(article.id).to_s
-					- title = (article.title.to_s+"("+rating+")")
+					- title = (article.title.to_s+"("+rating+ ' Rating'")")
 				- rescue
 				= link_to title, article.url, :target => "_blank"
 			-if !article.image_url.blank?
 				- url = "/books/#{article.id}/details"
 				%a.article-img-href{href: url} 
 					%img.article-img{:src => asset_path(article.image_url)}/
+- if !@message.blank?
+	:javascript
+		window.onload = function(){
+			alert("#{@message}");
+		}

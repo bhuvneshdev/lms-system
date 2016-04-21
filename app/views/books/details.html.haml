@@ -2,14 +2,15 @@
 	- if current_user.role != 'admin'
 		= f.input :title, disabled: true,  wrapper_html: { class: 'username user-pref-email'}
 		= f.input :author_name, disabled: true,  wrapper_html: { class: 'username user-pref-email'}
+		= f.input :type, disabled: true,  wrapper_html: { class: 'username user-pref-email'}
+		= f.input :sub_type, disabled: true,  wrapper_html: { class: 'username user-pref-email'}
+		= f.input :category, disabled: true,  wrapper_html: { class: 'username user-pref-email'}
 	- else
 		= f.input :title, wrapper_html: { class: 'username user-pref-email'}
 		= f.input :author_name, wrapper_html: { class: 'username user-pref-email'}
-	/ = @book.title
-	/ %br/
-	/ = @book.description
-	/ %br/
-	/ = f.input :rating, :as => :radio_buttons, :label => "Theme:", :collection =>  [ '1', '2', '3', '4', '5' ], wrapper: :vertical_radio_and_checkboxes
+		= f.input :type, wrapper_html: { class: 'username user-pref-email'}
+		= f.input :sub_type, wrapper_html: { class: 'username user-pref-email'}
+		= f.input :category, wrapper_html: { class: 'username user-pref-email'}
 	= f.label "Was the book userful?"
 	= select_tag("rating1", options_for_select([['1', '1'],['2', '2'],['3','3'],['4','4'],['5','5']], @book.rating1))
 	%br/
@@ -37,37 +38,17 @@
 	%head
 		Comments
 	%br/
-	#main_content
-		#post_content
-			- if !@comments.nil?
-				- @comments.each do |comm|
-					%li{:id => "micropost-#{comm.id}"}
-						Singh
-						%p.body
-							#{comm.feedback}
-						%p.date
-							Posted #{time_ago_in_words(comm.created_at)} ago.
-			%br/
-			%br/
-			= text_area_tag(:comment,nil, cols: "30", rows: "10")
-			%br/
-			= submit_tag("Submit")
-	/ - if !@comments.nil?
-	/ 	- @comments.each do |comm|
-	/ 		/ = comm.feedback
-	/ 		/ %br/
-	/ 		%li{:id => "micropost-#{comm.id}"}
-	/ 			Singh
-	/ 			%span.user
-	/ 				- u = User.find(comm.user_id)
-	/ 				/ #{comm.feedback}
-	/ 				/ / = link_to micropost.user.name, micropost.user
-	/ 			%span.content
-	/ 				#{comm.feedback}
-	/ 			%span.timestamp
-	/ 				Posted #{time_ago_in_words(comm.created_at)} ago.
-	/ %br/
-	/ %br/
-	/ = text_area_tag(:comment,nil, cols: "30", rows: "10")
-	/ %br/
-	/ = submit_tag("Submit")
+	- if !@comments.nil?
+		- @comments.each do |comm|
+			%li{:id => "micropost-#{comm.id}"}
+				%strong
+					Singh
+				%p.body
+					#{comm.feedback}
+				%p.date{:style => "text-align: right;border-bottom:2px solid black"}
+					Posted #{time_ago_in_words(comm.created_at)} ago.
+	%br/
+	%br/
+	= text_area_tag(:comment,nil, cols: "30", rows: "3")
+	%br/
+	= submit_tag("Submit")

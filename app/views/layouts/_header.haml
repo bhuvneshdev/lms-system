@@ -2,6 +2,7 @@
 	.header-top
 		.header-title
 			CREATIVE MINDS
+			= link_to "Blog", posts_path, :class => "library-btn"
 		.header-login
 			- if user_signed_in?
 				= link_to "Sign out", destroy_user_session_path, method: :delete
@@ -13,8 +14,10 @@
 			= link_to "Home", root_path
 			= link_to "Add Books", books_path
 			= link_to "User Preferences", page_edit_path
-			= link_to "Add New blog", new_post_path
-			- if !current_user.nil? && current_user.role == 'admin'
+			= link_to "View Blogs", posts_path
+			- if !current_user.nil?
+				= link_to "Add New blog", new_post_path
+			- if !current_user.nil? && (current_user.role == 'admin' || current_user.role == 'faculty')
 				= link_to "Pending Blog Posts",{controller: 'posts', action: 'index',id: true},style: "color: red;"
 		.header-right
 			= link_to "About", page_about_path

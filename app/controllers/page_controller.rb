@@ -1,6 +1,6 @@
 class PageController < ApplicationController
 
-	before_action :authenticate_user!, except: [:home,:about,:faqs,:contact]
+	# before_action :authenticate_user!, except: [:home,:about,:faqs,:contact]
 	#before_action :set_user, only: [:edit,:update]
   def home
   end
@@ -9,6 +9,8 @@ class PageController < ApplicationController
   end
 
   def faqs
+
+    @name = "bhuvnesh"
   end
 
   def contact
@@ -16,6 +18,11 @@ class PageController < ApplicationController
   end
 
   def show
+  end
+  
+  def show_users
+    @user = User.all
+    # render "about"
   end
 
 

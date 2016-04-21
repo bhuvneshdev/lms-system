@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
 	end
 
 	def self.check_comments_created
-		comments = Comment.where("created_at >= '#{Time.now - 1.day}' and commentable_type = 'Post'")
+		comments = Comment.where("created_at >= '#{Time.now - 4.day}' and commentable_type = 'Post'")
 		hash = Hash.new
 		if !comments.blank?
 			

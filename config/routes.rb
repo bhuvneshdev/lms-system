@@ -19,12 +19,17 @@ LmsSystem::Application.routes.draw do
   get "create_comment" => "books#create_comment"
   post "create_comment" => "books#create_comment"
 
+  # get "page/about" => "page#about" 
   get "page/about" => "page#about" 
   get "page/faqs" => "page#faqs"
   get "page/contact" => "page#contact"
   get "page/edit" => "page#edit"
   post "page/edit" => "page#edit"
   post "page/:id/edit" => "page#edit"
+
+  get "page/show_users" => "page#show_users"
+  post "page/show_users" => "page#show_users"
+
 
   post "posts/:id/approve" => "posts#approve"
   get "posts/:id/approve" => "posts#approve"

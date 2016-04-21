@@ -4,7 +4,7 @@
   -else
     = f.input :email, placeholder: 'Enter email', hint: 'You cannot change your email.',  wrapper_html: { class: 'username user-pref-email'}
   = f.input :preferences,
-    collection: ['Computer Science','Arts','Geography','Mediciene'],
+    collection: ['Computer Science','Chemistry','Geography','PHYSICS'],
       wrapper: :vertical_radio_and_checkboxes, wrapper_html: { class: 'user-pref-opt' }
   - if current_user.role == 'admin'
     = f.input :role,

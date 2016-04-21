@@ -1,0 +1,79 @@
+ Computer Science,Applied Cryptography,How to learn Cryptography,"If you don't know much about cryptography, you should probably take a course. The Cryptography I course at Coursera is a good start, as is your local university's cryptography course. More important than knowing how to use the Chinese remainder theorem is how to use cryptography in practice.Step one is to read Cryptography Engineering. This is not optional. Read it. It is a fantastic book that details how to use cryptographic primitives. You'll be able to say to your crypto-ignorant friends: Yes, you encrypt your message with AES, but you used ECB! Or, you used Encrypt-and-MAC instead of Encrypt-then-MAC you dummy! You can't just learn cryptography like you learn CSS or Erlang or MySQL. You need to study it first and then implement it. Otherwise you're dangerous.",https://www.youtube.com/watch?v=cRiMb5q2VVk,http://pad1.whstatic.com/images/thumb/7/7a/Learn-Cryptography-Step-6.jpg/aid5195916-728px-Learn-Cryptography-Step-6.jpg,"<p>If you don't know much about cryptography, you should probably take a course. </p>
+<br>
+<p>The Cryptography I course at Coursera is a good start, as is your local university's cryptography course. More important than knowing how to use the Chinese remainder theorem is how to use cryptography in practice. </p>
+<br>
+<p>Step one is to read Cryptography Engineering. This is not optional. Read it. It is a fantastic book that details how to use cryptographic primitives. You'll be able to say to your crypto-ignorant friends: Yes, you encrypt your message with AES, but you used ECB! Or, you used Encrypt-and-MAC instead of Encrypt-then-MAC you dummy!</p>
+",Useful guide
+ Computer Science,Atrificial Intelligence,An Interview with the AI expert ! ,"Stuart Russell is an AI expert who is a computer scientist and founder of of the Center for Intelligent Systems at the University of California. Russell is also the co-author of ""Artificial Intelligence: A Modern Approach,"" a textbook about AI used in more than 100 countries.
+Below is a conversation with him
+
+Q. Why did you choose a career in AI over one in physics?
+A. AI was very much a new field. You could break new ground quite quickly, whereas a lot of the physicists I talked to were not very optimistic either about their field or establishing their own career.
+
+Q. What's your favorite sci-fi depiction of AI?
+A. The one I would say is realistic, in the not-too-distant future, and also deliberately not sensationalistic or scary, is the computer in ""Star Trek"" onboard the Enterprise. It just acts as a repository of knowledge and can do calculations and projections, essentially as a completely faithful servant. 
+
+Q. What's the most impressive real-world use of AI technology you've ever seen?
+A. One would be Deep Mind's DQN system. It essentially just wakes up, sees the screen of a video game, and works out how to play the video game to a superhuman level. It can do that for about 30 different Atari titles. 
+
+Q. What is the most common misconception of AI?
+A. That what AI people are working towards is a conscious machine. And that until you have conscious machine, there's nothing to worry about. It's really a red herring.To my knowledge nobody — no one who is publishing papers in the main field of AI — is even working on consciousness. I think there are some neuroscientists who are trying to understand it, but I'm not aware that they've made any progress.
+
+",https://www.youtube.com/watch?v=53K1dMyslJg,http://static4.techinsider.io/image/55c0f14f371d22a40e8bc790-820-569/stuartrussell.png,"
+<p>Stuart Russell is an AI expert who is a computer scientist and founder of of the Center for Intelligent Systems at the University of California. Russell is also the co-author of ""Artificial Intelligence: A Modern Approach,"" a textbook about AI used in more than 100 countries. </p>
+<br>
+<p>Below is a conversation with him.</p> 
+<br>
+
+<ul>Q. Why did you choose a career in AI over one in physics?</ul>
+<li>A. AI was very much a new field. You could break new ground quite quickly, whereas a lot of the physicists I talked to were not very optimistic either about their field or establishing their own career. </li>
+<br>
+<br>
+<ul><strong>Q. What's your favorite sci-fi depiction of AI?</strong></ul>
+<li>A. The one I would say is realistic, in the not-too-distant future, and also deliberately not sensationalistic or scary, is the computer in ""Star Trek"" onboard the Enterprise. It just acts as a repository of knowledge and can do calculations and projections, essentially as a completely faithful servant. </li>
+<br>
+<br>
+<ul><strong>Q. What's the most impressive real-world use of AI technology you've ever seen? </strong></ul>
+<li>A. One would be Deep Mind's DQN system. It essentially just wakes up, sees the screen of a video game, and works out how to play the video game to a superhuman level. It can do that for about 30 different Atari titles. </li>
+<br>
+<br>
+<ul><strong>Q. What is the most common misconception of AI? </strong></ul>
+<li>A. That what AI people are working towards is a conscious machine. And that until you have conscious machine, there's nothing to worry about. It's really a red herring.To my knowledge nobody — no one who is publishing papers in the main field of AI — is even working on consciousness. I think there are some neuroscientists who are trying to understand it, but I'm not aware that they've made any progress.</li>
+",Interview
+Chemistry,Atoms and Molecules,Growing with Science ,"What are elements, atoms and molecules? How do we study them? 
+Atoms
+Atoms are tiny particles which make up elements
+Atoms are particles which cannot be divided further
+There are currently 118 different elements
+Atoms of one element are different to atoms of every other type of element
+Molecules
+
+Are made up of two or more atoms chemically bonded (joined) together
+It is not possible to separate the atoms in a molecule without breaking bonds
+Elements
+
+Elements are made up of just one type of atom
+For example Oxygen, O2, is a molecule made up of Oxygen atoms only and is therefore an element.
+The periodic table contains all 118 known elements
+",https://youtu.be/oSCX78-8-q0,https://bgcdn.s3.amazonaws.com/wp-content/uploads/2013/04/5-2-God-is-in-Nature-1024x681.jpg,"<p>What are elements, atoms and molecules? How do we study them? </p>
+<br>
+<br>
+<strong>Atoms</strong>
+<br>
+<p>Atoms are tiny particles which make up elements
+Atoms are particles which cannot be divided further
+There are currently 118 different elements
+Atoms of one element are different to atoms of every other type of element</p>
+<br>
+<br>
+<strong>Molecules</strong>
+<br>
+<p>Are made up of two or more atoms chemically bonded (joined) together
+It is not possible to separate the atoms in a molecule without breaking bonds. </p>
+<br>
+<br>
+<strong>Elements</strong>
+<br>
+<p>Elements are made up of just one type of atom
+For example Oxygen, O2, is a molecule made up of Oxygen atoms only and is therefore an element.The periodic table contains all 118 known elements</p>
+",General

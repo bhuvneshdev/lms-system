@@ -28,18 +28,13 @@ class BooksController < ApplicationController
     if !@book.nil? && !current_user.nil?
       @comments = @book.comments.where(user_id: current_user.id)
     end
-    # if request.post?
-    #   binding.pry
-      
-    #   binding.pry
-    # end
     if request.post?
-      # rating = params['user_basic']['rating']
       rating1 = params['rating1']
       rating2 = params['rating2']
       rating3 = params['rating3']
       rating4 = params['rating4']
       rating5 = params['rating5']
+      binding.pry
       rating1,rating2,rating3,rating4,rating5 = BooksRating.update_rating(@book.id,current_user.id,rating1,rating2,rating3,rating4,rating5)
       @book.rating1 = rating1
       @book.rating2 = rating2
@@ -57,10 +52,11 @@ class BooksController < ApplicationController
       end
     end
     @overall_rating = BooksRating.over_all_rating(@book.id).to_s
-    # @overall_rating.to_f
   end
 
   def search_result
+    @book = ''
+    @message = ''
     if !request.post?
       if !current_user.nil? && !current_user.preferences.blank?
         @book = Book.where("category = '#{current_user.preferences}' OR description = '#{current_user.preferences}'").limit(16)
@@ -75,31 +71,15 @@ class BooksController < ApplicationController
         @book = Book.where("title like '%#{params['search']}%' or category like '%#{params['search']}%' or subcategory like '%#{params['search']}%'")
       end
       if @book.blank?
-        @book = Book.all.limit(16)
+        @book = Book.all
       end
-      # if (params['sorting'] == '1')
-      #   session['sorting'] = '1'
-      #   @book = @book.order("rating desc")
-      # elsif (params['sorting'] == '2')
-      #   session['sorting'] = '2'
-      #   @book = @book.order("view_count desc")
-      # end
-      # if (params['type'] == '1')
-      #   session['type'] = '1'
-      #   @book = @book.where(types: 1)
-      # elsif (params['type'] == '2')
-      #   session['type'] = '2'
-      #   @book = @book.where(types: 2)
-      # elsif (params['type'] == '3')
-      #   session['type'] = '3'
-      #   @book = @book.where(types: 3)
-      # end
-          
-      # if @book.blank?
-      #   @book = Book.all.limit(16)
-      # end
+      if !params['sub_type'].nil? && params['sub_type'] != '0' && (params['type'] != '1' || session['type'] != '1')
+        @message = 'Sub category can only be selected under Books category'
+      elsif params['sub_type'] != '0'
+        @book = @book.where(sub_type: params['sub_type'])
+      end
     end
-    if params['sorting'] == '0'
+    if (params['sorting'] == '0')
       session['sorting'] = '0'
     elsif (params['sorting'] == '1')
       session['sorting'] = '1'
@@ -108,17 +88,23 @@ class BooksController < ApplicationController
       session['sorting'] = '2'
       @book = @book.order("view_count desc")
     end
+    # if (session['sorting'] == params['sorting'] && !params['sorting'].nil? && params['sorting'] != '0')
+    #   # @book = @book.where(sorting: params['sorting'].to_i)
+    # end
     if (params['type'] == '0')
       session['type'] = '0'
     elsif (params['type'] == '1')
       session['type'] = '1'
-      @book = @book.where(types: 1)
+      # @book = @book.where(types: 1)
     elsif (params['type'] == '2')
       session['type'] = '2'
-      @book = @book.where(types: 2)
+      # @book = @book.where(types: 2)
     elsif (params['type'] == '3')
       session['type'] = '3'
-      @book = @book.where(types: 3)
+      # @book = @book.where(types: 3)
+    end
+    if (session['type'] == params['type'] && !params['type'].nil? && params['type'] != '0')
+      @book = @book.where(types: params['type'].to_i)
     end
   end
 
