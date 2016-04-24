@@ -1,36 +1,43 @@
-#main_content
-	#post_content
-		%h1.title
-			= @post.title
-		%h2
-			= image_tag(@post.image_url,size: "260x150")
-		%p.body
-			= @post.body.html_safe
-		%h2
-			=raw YouTubeAddy.youtube_embed_url(@post.video_url,320,215)
-		%p.date
-			Submitted
-			= time_ago_in_words(@post.created_at)
-			Ago 
-			- if !current_user.nil? && (current_user.role != 'student' || current_user.id == @post.user_id)
-				|
-				= link_to 'Edit' ,edit_post_path(@post)
-				|
-				= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: 'Are you sure'}
-				|
-			- if !current_user.nil? && current_user.role != 'student'
-				- if @post.approved
-					= link_to 'Decline', action: 'approve' #{}"posts/approve"
-				- else
-					= link_to 'Approve', action: 'approve' #{}"posts/approve"
+.container
+	#main_content
+		#post_content
+			.col-md-12
+				%div#blog_detail
+					%h2
+						= @post.title
+				%div#postImg
+					= image_tag(@post.image_url,size: "300x200")
+				%p#postTxt
+					= @post.body.html_safe
+				%div#postVideo
+					=raw YouTubeAddy.youtube_embed_url(@post.video_url,'80%',400)
+				%p.date
+					Submitted
+					= time_ago_in_words(@post.created_at)
+					Ago 
+					- if !current_user.nil? && (current_user.role != 'student' || current_user.id == @post.user_id)
+						
+						%button.btn.btn-primary.btnTxt#testBtn
+							= link_to 'Edit' ,edit_post_path(@post)
+						
+						%button.btn.btn-danger.btnTxt
+							= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: 'Are you sure'}
+						
+					- if !current_user.nil? && current_user.role != 'student'
+						- if @post.approved
+							%button.btn.btn-warning.btnTxt
+								= link_to 'Decline', action: 'approve' #{}"posts/approve"
+						- else
+							%button.btn.btn-warning.btnTxt
+								= link_to 'Approve', action: 'approve' #{}"posts/approve"
 
-		#comments
-			%header
-				= @post.comments.count
-				Comments
-				= render @post.comments
-			%h1
-				Add a comment:
-				= render "comments/form"
+				#comments
+					%header
+						= @post.comments.count
+						Comments
+						= render @post.comments
+					%h1
+						Add a comment:
+						= render "comments/form"
 = social_share_button_tag(@post.title)
 

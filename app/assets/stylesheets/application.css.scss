@@ -107,9 +107,46 @@ a {
    height: 0;
    clear: both;
 }
+#blogName
+{
+	margin-left:10px;
+	font-size:10px;
+	font-family: Arial;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 24px;
+}
+#blogName::before
+{
+	content: 'Posted By :';
+}
+#postedTime
+{
+	padding: 5px;
+	background-color: #8557b1;
+	color:white;
+	margin-left: 20px;
+	font-family: Arial;
+	font-size: 10px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 24px;
+}
+
+#blogPlace h2
+{
+	font-family: 'Helvetica Neue';
+	font-size: 24px;
+	font-style: italic;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 24px;
+}
 
 #main_content {
-	margin-left: 250px;
+	/*margin-left: 250px; */
 	#header {
 		padding: 1em 3em;
 		border-bottom: 1px solid #d6dce0;
@@ -129,7 +166,7 @@ a {
 				font-size: .8em;
 				margin-left: .5em;
 			}
-		}
+		} 
 	}
 	.post_wrapper {
 		padding: 3em;
@@ -142,7 +179,7 @@ a {
 				color: #2a2f35;
 				font-size: 1.5em;
 				&:hover {
-					color: #33acb7;
+					color: #33acb7; 
 				}
 			}
 		}
@@ -256,15 +293,80 @@ a {
 	}
 	input[type="submit"] {
 		outline: none;
+		font-family: sans-serif;
+		font-weight: 400;
 		background: transparent;
 		border: 1px solid #d6dce0;
 		padding: .5em 1.5em;
 		font-size: 1.1em;
+		background-color: #00cd00;
+		color:white;
 		border-radius: 1.5em;
 		margin-left: .5em;
 		&:hover {
-			border: 1px solid #33acb7;
-			color: #33acb7;
+			
+			background-color: #008000;
 		}
 	}
+}
+
+#postImg
+{
+	float: right;
+	margin:20px;
+	margin-top: -80px;
+}
+#postTxt
+{
+	clear:both;
+	padding: 10px;
+}
+#blog_detail_title h2
+{
+	font-family: 'Helvetica Neue';
+	font-size: 35px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 600;
+	line-height: 24px;
+	
+}
+#postVideo
+{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	width:80%;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.btnTxt
+{
+	margin-left:10px;
+	color:white;
+}
+.btnTxt:visited
+{
+	text-decoration:none;
+	color:white;
+}
+#new_post_heading
+{
+	text-align:center;
+	font-family: 'Helvetica Neue';
+	font-size: 35px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 600;
+	line-height: 24px;
+
+}
+#createBtn
+{
+	font-size:18px;
+	text-align:center;
+}
+.radioStyling
+{
+	margin-left:20px;
 }

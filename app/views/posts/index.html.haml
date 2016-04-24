@@ -1,7 +1,12 @@
-#main_content
-	- @posts.each do |post|
-		.post_wrapper
-			%h2.title
-				= link_to post.title, post
-			%p.date 
-				= post.created_at.strftime("%B, %d, %Y")
+.container
+	#blogTest
+		- @posts.each do |post|
+			.row
+				.col-md-10.col-md-offset-1#blogPlace
+					%h2.title
+						= link_to post.title, post
+						%span#blogName 
+							- user = User.where(id: post.user_id).last.email rescue nil
+							= user
+							%span#postedTime
+								= post.created_at.strftime("%B, %d, %Y")
