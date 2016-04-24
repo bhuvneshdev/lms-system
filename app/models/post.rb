@@ -3,4 +3,11 @@ class Post < ActiveRecord::Base
 	validates :body, presence: true
 	has_many :comments, as: :commentable
 	# belongs_to :user_id
+	before_save :before_save_tasks
+
+
+
+	def before_save_tasks
+		self.body = self.body.gsub("\n","<br>")
+	end
 end
