@@ -11,8 +11,8 @@ class PostsController < ApplicationController
 
 	def new
 		@post = Post.new
-		render 'create'
-		redirect_to show_users
+		# render 'create'
+		# redirect_to show_users
 	end
 
 	def create
