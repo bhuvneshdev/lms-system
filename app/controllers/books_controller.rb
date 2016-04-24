@@ -34,7 +34,6 @@ class BooksController < ApplicationController
       rating3 = params['rating3']
       rating4 = params['rating4']
       rating5 = params['rating5']
-      binding.pry
       rating1,rating2,rating3,rating4,rating5 = BooksRating.update_rating(@book.id,current_user.id,rating1,rating2,rating3,rating4,rating5)
       @book.rating1 = rating1
       @book.rating2 = rating2

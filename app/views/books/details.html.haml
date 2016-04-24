@@ -1,3 +1,20 @@
+- book1 = []
+- book1[@book.rating1.to_i] = true
+- book2 = []
+- book2[@book.rating2.to_i] = true
+- book3 = []
+- book3[@book.rating3.to_i] = true
+- book4 = []
+- book4[@book.rating4.to_i] = true
+- book5 = []
+- book5[@book.rating5.to_i] = true
+- book6 = []
+- book6[@book.rating5.to_i] = true
+- book7 = []
+- book7[@book.rating5.to_i] = true
+- book8 = []
+- book8[@book.rating5.to_i] = true
+
 = simple_form_for (@book), :url => url_for(:action => 'details', :controller => 'books'), as: 'user_basic', method: :post  do |f|
 	- if current_user.role != 'admin'
 		= f.input :title, disabled: true,  wrapper_html: { class: 'username user-pref-email'}
@@ -11,25 +28,67 @@
 		= f.input :type, wrapper_html: { class: 'username user-pref-email'}
 		= f.input :sub_type, wrapper_html: { class: 'username user-pref-email'}
 		= f.input :category, wrapper_html: { class: 'username user-pref-email'}
-	= f.label "Was the book userful?"
-	%input.radioStyling{checked: false,:name => "rating1", :type => "radio", :value => "1"} 1    
-	%input.radioStyling{checked: true,:name => "rating1", :type => "radio", :value => "2"} 2
-	%input.radioStyling{:name => "rating1", :type => "radio", :value => "3"} 3
-	%input.radioStyling{:name => "rating1", :type => "radio", :value => "4"} 4
-	%input.radioStyling{:name => "rating1", :type => "radio", :value => "5"} 5
+	= f.label "It was detailed?"
+	%input.radioStyling{checked: book1[1],:name => "rating1", :type => "radio", :value => "1"} 1    
+	%input.radioStyling{checked: book1[2],:name => "rating1", :type => "radio", :value => "2"} 2
+	%input.radioStyling{checked: book1[3],:name => "rating1", :type => "radio", :value => "3"} 3
+	%input.radioStyling{checked: book1[4],:name => "rating1", :type => "radio", :value => "4"} 4
+	%input.radioStyling{checked: book1[5],:name => "rating1", :type => "radio", :value => "5"} 5
 
 	%br/
-	= f.label "Did the book serve your purpose?"
-	= select_tag("rating2", options_for_select([['1', '1'],['2', '2'],['3','3'],['4','4'],['5','5']], @book.rating2))
+	= f.label "Answered Questions I looking for"
+	%input.radioStyling{checked: book2[1],:name => "rating2", :type => "radio", :value => "1"} 1    
+	%input.radioStyling{checked: book2[2],:name => "rating2", :type => "radio", :value => "2"} 2
+	%input.radioStyling{checked: book2[3],:name => "rating2", :type => "radio", :value => "3"} 3
+	%input.radioStyling{checked: book2[4],:name => "rating2", :type => "radio", :value => "4"} 4
+	%input.radioStyling{checked: book2[5],:name => "rating2", :type => "radio", :value => "5"} 5
+	
+	/ = select_tag("rating2", options_for_select([['1', '1'],['2', '2'],['3','3'],['4','4'],['5','5']], @book.rating2))
 	%br/
-	= f.label "Was the book easy to understand?"
-	= select_tag("rating3", options_for_select([['1', '1'],['2', '2'],['3','3'],['4','4'],['5','5']], @book.rating3))
+	= f.label "Easy to find material(Bibliography, Glossary, well defined index, etc)"
+	%input.radioStyling{checked: book3[1],:name => "rating3", :type => "radio", :value => "1"} 1    
+	%input.radioStyling{checked: book3[2],:name => "rating3", :type => "radio", :value => "2"} 2
+	%input.radioStyling{checked: book3[3],:name => "rating3", :type => "radio", :value => "3"} 3
+	%input.radioStyling{checked: book3[4],:name => "rating3", :type => "radio", :value => "4"} 4
+	%input.radioStyling{checked: book3[5],:name => "rating3", :type => "radio", :value => "5"} 5
+	/ = select_tag("rating3", options_for_select([['1', '1'],['2', '2'],['3','3'],['4','4'],['5','5']], @book.rating3))
 	%br/
-	= f.label "Would you recommend this book to a friend?"
-	= select_tag("rating4", options_for_select([['1', '1'],['2', '2'],['3','3'],['4','4'],['5','5']], @book.rating4))
+	= f.label "It had solved examples to explain concepts"
+	%input.radioStyling{checked: book4[1],:name => "rating4", :type => "radio", :value => "1"} 1    
+	%input.radioStyling{checked: book4[2],:name => "rating4", :type => "radio", :value => "2"} 2
+	%input.radioStyling{checked: book4[3],:name => "rating4", :type => "radio", :value => "3"} 3
+	%input.radioStyling{checked: book4[4],:name => "rating4", :type => "radio", :value => "4"} 4
+	%input.radioStyling{checked: book4[5],:name => "rating4", :type => "radio", :value => "5"} 5
+	/ # = select_tag("rating4", options_for_select([['1', '1'],['2', '2'],['3','3'],['4','4'],['5','5']], @book.rating4))
 	%br/
-	= f.label "How would you rate this book overall?"
-	= select_tag("rating5", options_for_select([['1', '1'],['2', '2'],['3','3'],['4','4'],['5','5']], @book.rating5))
+	= f.label "It needs prior knowledge to understand concepts"
+	%input.radioStyling{checked: book5[1],:name => "rating5", :type => "radio", :value => "1"} 1    
+	%input.radioStyling{checked: book5[2],:name => "rating5", :type => "radio", :value => "2"} 2
+	%input.radioStyling{checked: book5[3],:name => "rating5", :type => "radio", :value => "3"} 3
+	%input.radioStyling{checked: book5[4],:name => "rating5", :type => "radio", :value => "4"} 4
+	%input.radioStyling{checked: book5[5],:name => "rating5", :type => "radio", :value => "5"} 5
+	%br/
+	= f.label "It needs prior knowledge to understand concepts"
+	%input.radioStyling{checked: book6[1],:name => "rating6", :type => "radio", :value => "1"} 1    
+	%input.radioStyling{checked: book6[2],:name => "rating6", :type => "radio", :value => "2"} 2
+	%input.radioStyling{checked: book6[3],:name => "rating6", :type => "radio", :value => "3"} 3
+	%input.radioStyling{checked: book6[4],:name => "rating6", :type => "radio", :value => "4"} 4
+	%input.radioStyling{checked: book6[5],:name => "rating6", :type => "radio", :value => "5"} 5
+	%br/
+	= f.label "It needs prior knowledge to understand concepts"
+	%input.radioStyling{checked: book7[1],:name => "rating7", :type => "radio", :value => "1"} 1    
+	%input.radioStyling{checked: book7[2],:name => "rating7", :type => "radio", :value => "2"} 2
+	%input.radioStyling{checked: book7[3],:name => "rating7", :type => "radio", :value => "3"} 3
+	%input.radioStyling{checked: book7[4],:name => "rating7", :type => "radio", :value => "4"} 4
+	%input.radioStyling{checked: book7[5],:name => "rating7", :type => "radio", :value => "5"} 5
+	%br/
+	= f.label "It needs prior knowledge to understand concepts"
+	%input.radioStyling{checked: book8[1],:name => "rating8", :type => "radio", :value => "1"} 1    
+	%input.radioStyling{checked: book8[2],:name => "rating8", :type => "radio", :value => "2"} 2
+	%input.radioStyling{checked: book8[3],:name => "rating8", :type => "radio", :value => "3"} 3
+	%input.radioStyling{checked: book8[4],:name => "rating8", :type => "radio", :value => "4"} 4
+	%input.radioStyling{checked: book8[5],:name => "rating8", :type => "radio", :value => "5"} 5
+	/ # = select_tag("rating5", options_for_select([['1', '1'],['2', '2'],['3','3'],['4','4'],['5','5']], @book.rating5))
 	%br/
 	= fields_for @book do |fa|
 		= fa.label "Over All Rating"
