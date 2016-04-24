@@ -12,7 +12,12 @@
 		= f.input :sub_type, wrapper_html: { class: 'username user-pref-email'}
 		= f.input :category, wrapper_html: { class: 'username user-pref-email'}
 	= f.label "Was the book userful?"
-	= select_tag("rating1", options_for_select([['1', '1'],['2', '2'],['3','3'],['4','4'],['5','5']], @book.rating1))
+	%input.radioStyling{checked: false,:name => "rating1", :type => "radio", :value => "1"} 1    
+	%input.radioStyling{checked: true,:name => "rating1", :type => "radio", :value => "2"} 2
+	%input.radioStyling{:name => "rating1", :type => "radio", :value => "3"} 3
+	%input.radioStyling{:name => "rating1", :type => "radio", :value => "4"} 4
+	%input.radioStyling{:name => "rating1", :type => "radio", :value => "5"} 5
+
 	%br/
 	= f.label "Did the book serve your purpose?"
 	= select_tag("rating2", options_for_select([['1', '1'],['2', '2'],['3','3'],['4','4'],['5','5']], @book.rating2))
