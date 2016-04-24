@@ -95,10 +95,10 @@
 		= @overall_rating
 	%br/
 	%br/
-	%a{href: @book.url, target:'_blank'}
+	%a.btn.btn-sm.btn-warning.btnDown{href: @book.url, target:'_blank'}
 		Download Book
 	.update-book-box
-		= f.button :submit, :class => "update-book-btn"
+		= f.button :submit, :class => "btn btn-lg btn-success"
 	%head
 		Comments
 	%br/
@@ -113,6 +113,6 @@
 					Posted #{time_ago_in_words(comm.created_at)} ago.
 	%br/
 	%br/
-	= text_area_tag(:comment,nil, cols: "30", rows: "3")
+	= text_area_tag(:comment,nil, cols: "60", rows: "8")
 	%br/
 	= submit_tag("Submit")

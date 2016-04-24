@@ -1,7 +1,8 @@
-%h1 Creative Minds
-.library-box
-	= link_to "Library", search_result_path, :class => "library-btn"
-%br/
+%div.image
+	%img{:src => "https://images.unsplash.com/photo-1423592707957-3b212afa6733?crop=entropy&dpr=2&fit=crop&fm=jpg&h=675&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450"}/
+	%h2
+		= link_to "Library", search_result_path, :id => "libHead" 
+
 / %br/
 / .library-box
 / 	= link_to "Blog", posts_path, :class => "library-btn"

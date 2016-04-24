@@ -57,6 +57,8 @@ body{
 }
 .library-box{
 	margin: 0 auto;
+	z-index: 1;
+	border: 2px solid white;
 	margin-top: 100px;
 	width: 225px;
 	.library-btn{
@@ -133,7 +135,7 @@ body{
 	text-align: center;
 }
 .edit_user_basic{
-	padding: 50px 350px;
+	padding: 50px;
 	select.select{
 		margin: 0 15px;
 	}
