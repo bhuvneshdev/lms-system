@@ -6,7 +6,7 @@ class BooksRating < ActiveRecord::Base
 		sum_rating = 0.0
 		rating = 0
 		if !all.empty?
-			all.each {|x| sum_rating += ((x.rating1+x.rating2+x.rating3+x.rating4+x.rating5).to_f/5); sum += 1}
+			all.each {|x| sum_rating += ((x.rating1+x.rating2+x.rating3+x.rating4+x.rating5+x.rating6+x.rating7+x.rating8).to_f/8); sum += 1}
 			rating = sum_rating.to_f/sum
 			return rating
 		else
@@ -14,7 +14,7 @@ class BooksRating < ActiveRecord::Base
 		end
 	end
 
-	def self.update_rating(book_id,user_id,rating1,rating2,rating3,rating4,rating5)
+	def self.update_rating(book_id,user_id,rating1,rating2,rating3,rating4,rating5,rating6,rating7,rating8)
 		book_rate = BooksRating.where(book_id: book_id,user_id: user_id).last
 		if !book_rate.nil?
 			book_rate.rating1 = rating1.to_i
@@ -22,12 +22,15 @@ class BooksRating < ActiveRecord::Base
 			book_rate.rating3 = rating3.to_i
 			book_rate.rating4 = rating4.to_i
 			book_rate.rating5 = rating5.to_i
-			book_rate.rating = rating1.to_i + rating2.to_i + rating3.to_i + rating4.to_i + rating5.to_i
+			book_rate.rating6 = rating6.to_i
+			book_rate.rating7 = rating7.to_i
+			book_rate.rating8 = rating8.to_i
+			book_rate.rating = rating1.to_i + rating2.to_i + rating3.to_i + rating4.to_i + rating5.to_i + rating6.to_i + rating7.to_i + rating8.to_i
 			book_rate.save
 		else
-			book_rate = BooksRating.create(book_id: book_id,user_id: user_id, rating1: rating1,rating2: rating2,rating3: rating3,rating4: rating4,rating5: rating5)
+			book_rate = BooksRating.create(book_id: book_id,user_id: user_id, rating1: rating1,rating2: rating2,rating3: rating3,rating4: rating4,rating5: rating5,rating6: rating6,rating7: rating7,rating8: rating8)
 		end
-		return book_rate.rating1,book_rate.rating2,book_rate.rating3,book_rate.rating4,book_rate.rating5
+		return book_rate.rating1,book_rate.rating2,book_rate.rating3,book_rate.rating4,book_rate.rating5,book_rate.rating6,book_rate.rating7,book_rate.rating8
 	end
 
 end

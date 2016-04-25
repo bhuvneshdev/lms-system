@@ -1,13 +1,28 @@
+.blog-box
+	= link_to "Add New Blog", new_post_path, :class => "blog-btn"
+	%span#firstspan
+		= link_to "Add Reseach Paper", '/posts/new?type=paper', :class => "blog-btn"
 .container
 	#blogTest
 		- @posts.each do |post|
-			.row
-				.col-md-10.col-md-offset-1#blogPlace
-					%h2.title
-						= link_to post.title, post
-						%span#blogName 
-							- user = User.where(id: post.user_id).last.email rescue nil
-							= user
-							%span#postedTime
-								= post.created_at.strftime("%B, %d, %Y")
+			- if post.published == true && post.type == 'paper'
+				.row
+					.col-md-10.col-md-offset-1#blogPlace
+						%h2.title
+							= link_to post.title, post
+							%span#blogName 
+								- user = User.where(id: post.user_id).last.email rescue nil
+								= user
+								%span#postedTime
+									= post.created_at.strftime("%B, %d, %Y")
+			- if post.type != 'paper'
+				.row
+					.col-md-10.col-md-offset-1#blogPlace
+						%h2.title
+							= link_to post.title, post
+							%span#blogName 
+								- user = User.where(id: post.user_id).last.email rescue nil
+								= user
+								%span#postedTime
+									= post.created_at.strftime("%B, %d, %Y")
 		

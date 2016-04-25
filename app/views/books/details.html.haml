@@ -9,11 +9,11 @@
 - book5 = []
 - book5[@book.rating5.to_i] = true
 - book6 = []
-- book6[@book.rating5.to_i] = true
+- book6[@book.rating6.to_i] = true
 - book7 = []
-- book7[@book.rating5.to_i] = true
+- book7[@book.rating7.to_i] = true
 - book8 = []
-- book8[@book.rating5.to_i] = true
+- book8[@book.rating8.to_i] = true
 
 = simple_form_for (@book), :url => url_for(:action => 'details', :controller => 'books'), as: 'user_basic', method: :post  do |f|
 	- if current_user.role != 'admin'

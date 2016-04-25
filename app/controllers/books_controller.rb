@@ -34,13 +34,18 @@ class BooksController < ApplicationController
       rating3 = params['rating3']
       rating4 = params['rating4']
       rating5 = params['rating5']
-      rating1,rating2,rating3,rating4,rating5 = BooksRating.update_rating(@book.id,current_user.id,rating1,rating2,rating3,rating4,rating5)
+      rating6 = params['rating6']
+      rating7 = params['rating7']
+      rating8 = params['rating8']
+      rating1,rating2,rating3,rating4,rating5,rating6,rating7,rating8 = BooksRating.update_rating(@book.id,current_user.id,rating1,rating2,rating3,rating4,rating5,rating6,rating7,rating8)
       @book.rating1 = rating1
       @book.rating2 = rating2
       @book.rating3 = rating3
       @book.rating4 = rating4
       @book.rating5 = rating5
-      @book.save
+      @book.rating6 = rating6
+      @book.rating7 = rating7
+      @book.rating8 = rating8
       if params['commit'] == "Submit"
         if !params['comment'].nil?
           feedback = params['comment']

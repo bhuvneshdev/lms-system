@@ -76,10 +76,15 @@ body{
 		border-radius: 5px;
 	}
 }
+
+#firstspan{
+	margin-left: 50px;
+}
 .blog-box{
 	margin: 0 auto;
-	margin-top: 100px;
-	width: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 641px;
 	.blog-btn{
 		&:hover{
 			background: none;
@@ -87,12 +92,13 @@ body{
 			color: #e3e3e3;
 			background: #31708F;
 		}
-		color: #31708F;
-		background: #e3e3e3;
-		border: 5px solid;
-		padding: 10px 20px;
-		font-size: 25px;
-		border-radius: 5px;
+		    color: #31708F;
+
+    background: #e3e3e3;
+    border: 2px solid;
+    padding: 9px 4px;
+    font-size: 15px;
+    border-radius: 5px;
 	}
 }
 .new-book-box, .create-book-box, .user-pref-box, .update-book-box{
