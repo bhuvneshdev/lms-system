@@ -1,5 +1,19 @@
+:ruby
+	if @post.type.blank?
+		if params["type"] == 'paper'
+			@type = 'paper'
+		else
+			@type = 'blog'
+		end
+	else
+		@type = @post.type
+	end
 #main_content
 	#page_wrapper
-		%h1#new_post_heading New posts
+		%h1#new_post_heading
+			- if @type != 'paper'
+				New Blog
+			- else
+				New Research Paper
 		= render 'form'
 

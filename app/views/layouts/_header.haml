@@ -15,8 +15,8 @@
 			= link_to "Add Books", books_path
 			= link_to "User Preferences", page_edit_path
 			= link_to "View Blogs", posts_path
-			- if !current_user.nil?
-				= link_to "Add New blog", new_post_path
+			= link_to "Add New blog", new_post_path
+			= link_to "Add Research Paper", '/posts/new?type=paper'
 			- if !current_user.nil? && (current_user.role == 'admin' || current_user.role == 'faculty')
 				= link_to "Pending Blog Posts",{controller: 'posts', action: 'index',id: true},style: "color: red;"
 		.header-right

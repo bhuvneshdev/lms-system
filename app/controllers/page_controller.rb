@@ -1,6 +1,7 @@
 class PageController < ApplicationController
 
 	# before_action :authenticate_user!, except: [:home,:about,:faqs,:contact]
+  before_action :authenticate_user!, only: [:edit]
 	#before_action :set_user, only: [:edit,:update]
   def home
   end

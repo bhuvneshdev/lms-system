@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
 	has_many :comments, as: :commentable
 	# belongs_to :user_id
 	before_save :before_save_tasks
+	self.inheritance_column = :_type_disabled
 
 
 

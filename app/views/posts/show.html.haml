@@ -5,12 +5,14 @@
 				%div#blog_detail
 					%h2
 						= @post.title
-				%div#postImg
-					= image_tag(@post.image_url,size: "300x200")
+				- if @post.type != 'paper'
+					%div#postImg
+						= image_tag(@post.image_url,size: "300x200")
 				%p#postTxt
 					= @post.body.html_safe
-				%div#postVideo
-					=raw YouTubeAddy.youtube_embed_url(@post.video_url,'80%',400)
+				- if @post.type != 'paper'
+					%div#postVideo
+						=raw YouTubeAddy.youtube_embed_url(@post.video_url,'80%',400)
 				%p.date
 					Submitted
 					= time_ago_in_words(@post.created_at)

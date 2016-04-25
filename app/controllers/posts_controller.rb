@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	before_action :authenticate_user!, only: [:create, :new]
 	def index
 		@posts = Post.all.order('created_at DESC')
 		if !params['id'].nil? && params['id'] == 'true'
@@ -19,12 +20,24 @@ class PostsController < ApplicationController
 		@post = Post.new(post_params)
 		# @post.save
 		# redirect_to @post
-		if !params[:video_url].nil?
-			@post.video_url = params[:video_url]
+		@post.user_id = current_user.id
+		if !params[:post][:video_url].nil?
+			@post.video_url = params[:post][:video_url]
 		end
-		if !params[:image_url].nil?
-			@post.image_url = params[:image_url]
+		if !params[:post][:image_url].nil?
+			@post.image_url = params[:post][:image_url]
 		end
+		if !params[:post][:published].nil?
+			if params[:post][:published] == 'true'
+				@post.published = true
+			else
+				@post.published = false
+			end
+ 		end
+ 		type = params[:post][:type]
+ 		if request.post?
+ 			@post.type = type
+ 		end
 		if @post.save
 			redirect_to @post
 		else

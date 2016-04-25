@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424023331) do
+ActiveRecord::Schema.define(version: 20160424204741) do
 
   create_table "blogit_comments", force: true do |t|
     t.string   "name",       null: false
@@ -98,6 +98,8 @@ ActiveRecord::Schema.define(version: 20160424023331) do
     t.integer  "user_id"
     t.string   "category"
     t.string   "sub_category"
+    t.boolean  "published",    default: true
+    t.string   "type"
   end
 
   create_table "products", force: true do |t|

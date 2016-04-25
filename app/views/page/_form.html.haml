@@ -10,7 +10,7 @@
     = f.input :role,
       collection: ['student','faculty','admin'],
         wrapper: :vertical_radio_and_checkboxes, wrapper_html: { class: 'user-pref-role' }
-    = f.button :submit, :class => 'btn btn-lg btn-success', :id => 'updateBtn'
+  = f.button :submit, :class => 'btn btn-lg btn-success', :id => 'updateBtn'
 / = form_tag("/page/edit", id: "admin-dashboard", role: "form", :html => { :method => :post, :multipart => true }) do
 /   %label Email ID
 /   - binding.pry
