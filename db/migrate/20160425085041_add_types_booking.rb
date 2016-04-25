@@ -1,5 +1,5 @@
 class AddTypesBooking < ActiveRecord::Migration
   def change
-  	add_column :booking, :types, :integer
+  	add_column :bookings, :types, :integer
   end
 end
