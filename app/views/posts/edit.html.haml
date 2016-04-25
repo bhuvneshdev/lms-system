@@ -1,3 +1,13 @@
+:ruby
+	if @post.type.blank?
+		if params["type"] == 'paper'
+			@type = 'paper'
+		else
+			@type = 'blog'
+		end
+	else
+		@type = @post.type
+	end
 #main_content
 	#page_wrapper
 		%h1 Edit posts
