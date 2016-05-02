@@ -22,12 +22,14 @@
 		= f.input :type, disabled: true,  wrapper_html: { class: 'username user-pref-email'}
 		= f.input :sub_type, disabled: true,  wrapper_html: { class: 'username user-pref-email'}
 		= f.input :category, disabled: true,  wrapper_html: { class: 'username user-pref-email'}
+		= f.input :subcategory, disabled: true,  wrapper_html: { class: 'username user-pref-email'}
 	- else
 		= f.input :title, wrapper_html: { class: 'username user-pref-email'}
 		= f.input :author_name, wrapper_html: { class: 'username user-pref-email'}
 		= f.input :type, wrapper_html: { class: 'username user-pref-email'}
 		= f.input :sub_type, wrapper_html: { class: 'username user-pref-email'}
 		= f.input :category, wrapper_html: { class: 'username user-pref-email'}
+		= f.input :subcategory, wrapper_html: { class: 'username user-pref-email'}
 	= f.label "It was detailed?"
 	%input.radioStyling{checked: book1[1],:name => "rating1", :type => "radio", :value => "1"} 1    
 	%input.radioStyling{checked: book1[2],:name => "rating1", :type => "radio", :value => "2"} 2
@@ -68,21 +70,21 @@
 	%input.radioStyling{checked: book5[4],:name => "rating5", :type => "radio", :value => "4"} 4
 	%input.radioStyling{checked: book5[5],:name => "rating5", :type => "radio", :value => "5"} 5
 	%br/
-	= f.label "It needs prior knowledge to understand concepts"
+	= f.label "It has practice questions"
 	%input.radioStyling{checked: book6[1],:name => "rating6", :type => "radio", :value => "1"} 1    
 	%input.radioStyling{checked: book6[2],:name => "rating6", :type => "radio", :value => "2"} 2
 	%input.radioStyling{checked: book6[3],:name => "rating6", :type => "radio", :value => "3"} 3
 	%input.radioStyling{checked: book6[4],:name => "rating6", :type => "radio", :value => "4"} 4
 	%input.radioStyling{checked: book6[5],:name => "rating6", :type => "radio", :value => "5"} 5
 	%br/
-	= f.label "It needs prior knowledge to understand concepts"
+	= f.label "Author uses simple language to explain concepts"
 	%input.radioStyling{checked: book7[1],:name => "rating7", :type => "radio", :value => "1"} 1    
 	%input.radioStyling{checked: book7[2],:name => "rating7", :type => "radio", :value => "2"} 2
 	%input.radioStyling{checked: book7[3],:name => "rating7", :type => "radio", :value => "3"} 3
 	%input.radioStyling{checked: book7[4],:name => "rating7", :type => "radio", :value => "4"} 4
 	%input.radioStyling{checked: book7[5],:name => "rating7", :type => "radio", :value => "5"} 5
 	%br/
-	= f.label "It needs prior knowledge to understand concepts"
+	= f.label "Would you recommend this book, to someone?"
 	%input.radioStyling{checked: book8[1],:name => "rating8", :type => "radio", :value => "1"} 1    
 	%input.radioStyling{checked: book8[2],:name => "rating8", :type => "radio", :value => "2"} 2
 	%input.radioStyling{checked: book8[3],:name => "rating8", :type => "radio", :value => "3"} 3
@@ -95,6 +97,8 @@
 		= @overall_rating
 	%br/
 	%br/
+	%a.btn.btn-sm.btn-warning{href: "/posts?category=#{@book.subcategory}", target:'_blank'}
+		Related Blogs
 	%a.btn.btn-sm.btn-warning.btnDown{href: @book.url, target:'_blank'}
 		Download Book
 	.update-book-box

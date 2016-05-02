@@ -14,6 +14,14 @@
 		= f.text_field :title
 		%br/
 	- if @type == 'blog'
+		%br/
+		%p
+		= f.label :sub_category
+		%br/
+		= f.text_field :sub_category
+		%br/
+		/ 	= select_tag :category, options_for_select(["Select Category"] + ['Cryptography','Atrificial Intelligence','Atoms and Molecules', 'Operating System', '']), :class=>"size-16", :style=>"width: 210px;"
+		%br
 		%p
 			= f.label :video_url
 			%br/

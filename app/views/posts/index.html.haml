@@ -1,7 +1,7 @@
 .blog-box
 	= link_to "Add New Blog", new_post_path, :class => "blog-btn"
 	%span#firstspan
-		= link_to "Add Reseach Paper", '/posts/new?type=paper', :class => "blog-btn"
+		= link_to "Add Research Idea", '/posts/new?type=paper', :class => "blog-btn"
 .container
 	#blogTest
 		- @posts.each do |post|

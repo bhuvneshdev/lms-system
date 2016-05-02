@@ -1,13 +1,19 @@
 class PostsController < ApplicationController
-	before_action :authenticate_user!, only: [:create, :new]
+	before_action :authenticate_user!, only: [:create, :new, :index]
 	def index
 		@posts = Post.all.order('created_at DESC')
 		if !params['id'].nil? && params['id'] == 'true'
 			@posts = @posts.where("approved= false")
-		end
-		if (!current_user.nil? && current_user.role == 'student') || (current_user.nil?)
+		else
 			@posts = @posts.where("approved = true")
 		end
+		if !params['category'].nil? 
+			sub = '%'+params['category']+'%'
+			@posts = @posts.where("sub_category like '#{sub}'")
+		end
+		# if (!current_user.nil? && current_user.role == 'student') || (current_user.nil?)
+		# 	@posts = @posts.where("approved = true")
+		# end
 	end
 
 	def new
@@ -60,7 +66,7 @@ class PostsController < ApplicationController
 
 	def update
 		@post = Post.find(params[:id])
-		if(@post.update(params[:post].permit(:title,:body,:video_url,:image_url)))
+		if(@post.update(params[:post].permit(:title,:body,:video_url,:image_url,:sub_category)))
 			redirect_to @post
 		else
 			render 'edit'
@@ -82,6 +88,6 @@ class PostsController < ApplicationController
 
 	private
 		def post_params
-			params.require(:post).permit(:title,:body)
+			params.require(:post).permit(:title,:body,:sub_category)
 		end
 end
