@@ -6,7 +6,7 @@ class BooksRating < ActiveRecord::Base
 		sum_rating = 0.0
 		rating = 0
 		if !all.empty?
-			all.each {|x| sum_rating += ((x.rating1+x.rating2+x.rating3+x.rating4+x.rating5+x.rating6+x.rating7+x.rating8).to_f/8); sum += 1}
+			all.each {|x| sum_rating += ((fix_rating(x.rating1)+fix_rating(x.rating2)+fix_rating(x.rating3)+fix_rating(x.rating4)+fix_rating(x.rating5)+fix_rating(x.rating6)+fix_rating(x.rating7)+fix_rating(x.rating8)).to_f/8); sum += 1}
 			rating = sum_rating.to_f/sum
 			return rating
 		else
@@ -31,6 +31,14 @@ class BooksRating < ActiveRecord::Base
 			book_rate = BooksRating.create(book_id: book_id,user_id: user_id, rating1: rating1,rating2: rating2,rating3: rating3,rating4: rating4,rating5: rating5,rating6: rating6,rating7: rating7,rating8: rating8)
 		end
 		return book_rate.rating1,book_rate.rating2,book_rate.rating3,book_rate.rating4,book_rate.rating5,book_rate.rating6,book_rate.rating7,book_rate.rating8
+	end
+
+	def self.fix_rating(value)
+		if value.nil?
+			1
+		else
+			value
+		end
 	end
 
 end
