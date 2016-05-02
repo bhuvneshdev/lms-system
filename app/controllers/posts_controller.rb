@@ -8,8 +8,8 @@ class PostsController < ApplicationController
 			@posts = @posts.where("approved = true")
 		end
 		if !params['category'].nil? 
-			sub = '%'+params['category']+'%'
-			@posts = @posts.where("sub_category like '#{sub}'")
+			sub = '%'+params['category'].downcase+'%'
+			@posts = @posts.where("lower(sub_category) like '#{sub}'")
 		end
 		# if (!current_user.nil? && current_user.role == 'student') || (current_user.nil?)
 		# 	@posts = @posts.where("approved = true")
