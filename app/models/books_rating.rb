@@ -2,12 +2,16 @@ class BooksRating < ActiveRecord::Base
 
 	def self.over_all_rating(book_id)
 		all = BooksRating.where(book_id: book_id)
+		book = Book.find book_id
 		sum = 0
 		sum_rating = 0.0
 		rating = 0
 		if !all.empty?
 			all.each {|x| sum_rating += ((fix_rating(x.rating1)+fix_rating(x.rating2)+fix_rating(x.rating3)+fix_rating(x.rating4)+fix_rating(x.rating5)+fix_rating(x.rating6)+fix_rating(x.rating7)+fix_rating(x.rating8)).to_f/8); sum += 1}
 			rating = sum_rating.to_f/sum
+			# binding.pry
+			book.rating = rating
+			book.save
 			return rating
 		else
 			return rating
@@ -39,6 +43,27 @@ class BooksRating < ActiveRecord::Base
 		else
 			value
 		end
+	end
+
+	def self.update_db(book_id)
+		all = BooksRating.where(book_id: book_id)
+		book = Book.find book_id
+		sum = 0
+		sum_rating = 0.0
+		rating = 0
+		if !all.empty?
+			all.each {|x| sum_rating += ((fix_rating(x.rating1)+fix_rating(x.rating2)+fix_rating(x.rating3)+fix_rating(x.rating4)+fix_rating(x.rating5)+fix_rating(x.rating6)+fix_rating(x.rating7)+fix_rating(x.rating8)).to_f/8); sum += 1}
+			rating = sum_rating.to_f/sum
+			book.rating = rating
+			book.save
+			return rating
+		else
+			return rating
+		end
+	end
+
+	def self.update
+		Book.all.each {|x| update_db(x.id)}
 	end
 
 end

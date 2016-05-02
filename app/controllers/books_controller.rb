@@ -83,15 +83,6 @@ class BooksController < ApplicationController
         @book = @book.where(sub_type: params['sub_type'])
       end
     end
-    if (params['sorting'] == '0')
-      session['sorting'] = '0'
-    elsif (params['sorting'] == '1')
-      session['sorting'] = '1'
-      @book = @book.order("rating desc")
-    elsif (params['sorting'] == '2')
-      session['sorting'] = '2'
-      @book = @book.order("view_count desc")
-    end
     # if (session['sorting'] == params['sorting'] && !params['sorting'].nil? && params['sorting'] != '0')
     #   # @book = @book.where(sorting: params['sorting'].to_i)
     # end
@@ -109,6 +100,16 @@ class BooksController < ApplicationController
     end
     if (session['type'] == params['type'] && !params['type'].nil? && params['type'] != '0')
       @book = @book.where(types: params['type'].to_i)
+    end
+
+    if (params['sorting'] == '0')
+      session['sorting'] = '0'
+    elsif (params['sorting'] == '1')
+      session['sorting'] = '1'
+      @book = @book.order("rating desc")
+    elsif (params['sorting'] == '2')
+      session['sorting'] = '2'
+      @book = @book.order("view_count desc")
     end
   end
 
