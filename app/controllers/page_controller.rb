@@ -40,7 +40,11 @@ class PageController < ApplicationController
 			@user.preferences = user_basic['preferences']
 		end
 		if user_basic['role'] != 'Select role'
-			@user.role = user_basic['role']
+      if user_basic['role'].nil? || user_basic['role'].blank?
+        @user.role = 'student' 
+      else
+        @user.role = user_basic['role']
+      end
 		end
 		@user.save
 	end

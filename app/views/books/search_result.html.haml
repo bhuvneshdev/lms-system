@@ -11,9 +11,9 @@
 		= select_tag("sorting",options_for_select([['Sorting','0'],['Highly Rated','1'],['Most viewed','2']],session['sorting']))
 	= text_field_tag :search, params[:search], class: "span2", placeholder: "Search Books"
 	- if session['type'].nil?
-		= select_tag("type", options_for_select([['All Types', '0'],['Books', '1'],['Videos', '2'],['WebLinks','3']], '0'))
+		= select_tag("type", options_for_select([['Resources', '0'],['Books', '1'],['Videos', '2'],['WebLinks','3']], '0'))
 	- else
-		= select_tag("type", options_for_select([['All Types', '0'],['Books', '1'],['videos', '2'],['WebLinks','3']], session['type']))
+		= select_tag("type", options_for_select([['Resources', '0'],['Books', '1'],['videos', '2'],['WebLinks','3']], session['type']))
 	- if session['sub_type'].nil?
 		= select_tag("sub_type", options_for_select([['Content Types', '0'],['textbook ', 'textbook'],['paper', 'paper'],['newspaper_article','newspaper_article'],['literature_survey','literature_survey'],['journal','journal']], '0'))
 	- else
