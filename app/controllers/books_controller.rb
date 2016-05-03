@@ -37,6 +37,15 @@ class BooksController < ApplicationController
       rating6 = params['rating6']
       rating7 = params['rating7']
       rating8 = params['rating8']
+      user_basics = params['user_basic']
+      # "title"=>"English Grammar", "author_name"=>"", "type"=>"book", "sub_type"=>"grammar", "category"=>"english", "subcategory"=>"Geography"}
+      @book.title = user_basics['title'] if !user_basics['title'].nil?
+      @book.author_name = user_basics['author_name'] if !user_basics['author_name'].nil?
+      @book.type = user_basics['type'] if !user_basics['type'].nil?
+      @book.sub_type = user_basics['sub_type'] if !user_basics['sub_type'].nil?
+      @book.category = user_basics['category'] if !user_basics['category'].nil?
+      @book.subcategory = user_basics['subcategory'] if !user_basics['subcategory'].nil?
+
       rating1,rating2,rating3,rating4,rating5,rating6,rating7,rating8 = BooksRating.update_rating(@book.id,current_user.id,rating1,rating2,rating3,rating4,rating5,rating6,rating7,rating8)
       @book.rating1 = rating1
       @book.rating2 = rating2
