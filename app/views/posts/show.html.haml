@@ -41,5 +41,22 @@
 					%h1
 						Add a comment:
 						= render "comments/form"
+				#comments
+					%div#bod
+						%h1
+							Users with similar interests
+					- post = @post.email_comments
+					%br
+					- if !post.blank?
+						- post.each_with_index do |item,index|
+							%span
+								-if index == 0
+									= item
+								-else
+									,
+									= item
+	
+%br
+%br
 = social_share_button_tag(@post.title)
 
