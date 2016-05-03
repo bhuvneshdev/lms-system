@@ -46,6 +46,7 @@ class BooksController < ApplicationController
       @book.rating6 = rating6
       @book.rating7 = rating7
       @book.rating8 = rating8
+      @book.save
       if params['commit'] == "Submit"
         if !params['comment'].nil?
           feedback = params['comment']
