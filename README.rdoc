@@ -1,28 +1,49 @@
-== README
+To install the library application on localhost, you need
+·        Ruby
+·        MySQL
+To run the application, follow the steps –
+·        gem install bundler
+·        bundle install
+·        Create empty database with name development_new or else you can provide database credentials in file config/database.yml
+·        Bundle exec rake db:migrate
+·        To run the server bundle exec rails.
+·        Now to access application locally: localhost:3000
+ 
+The application can be accessed by a user as follows -
+ 
+Step 1: SIGN UP - The user first creates an account and signs up, where he provides his     email-address and password of 8 characters using the sign-up button.
+Step 2: SIGN IN- After signing up, the user signs into the account using his e-mail address and his password using the sign in button.
+The above two steps are to be carried in order and are the necessary steps in the access of the application.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The application then flows as follows:
+The user can enter the library repository by clicking the LIBRARY text on the home page.
+Enter subject keyword in the search area (E.g Artificial Intelligence, Cryptography, Mechanics etc)
+The sorting drop down menu gives users the option to sort according to ratings and number of views of books.
+The resources can be filtered by books, web-links, videos, papers etc using the ‘content types’  drop-down and the ‘all-types’ drop-down menu.
+Clicking on the particular book gives you access to the following:
+·        Rate a book according to the rubrics given from 1 to 5 (5 is the best and 1 is the worst)
+·        Download the book using the ‘download ebook’ option
+·        Use the ‘related blogs’ option to go to the blogs section
+·        Type in your comment about the book and press submit to post your comment.
+·        A particular user can be tagged in the comment box by typing @email-id of the person to be tagged.
+6. The user can change his user preference by selecting the user preference tab and choosing one of the course. This keeps the particular course search as his default search on the home page.
+7. To add a blog, select the ‘Add new blog’ button and then click on the Add Blog button, the user can put the title, sub-category, video url, image url and body. If the blog is approved by admin then user can view a particular blog by clicking on the title of the blog in the Blogs page.
+8. To add a research idea, click on the ‘Add research idea’ button, fill in the details. Select yes to post on blog, if you want your idea to be posted on the blog, else select no. 
 
-Things you may want to cover:
+The users can comment in the comments section of the blog and tag other users by @emai-id of the particular user.
 
-* Ruby version
+The different access levels:
 
-* System dependencies
+Administrator: He has access to all the functions of the application. Additionally, he can add resources to the repository and approve or decline blog posts submitted by the user
+Faculty: In addition to accessing all the user functions, the faculty can approve or decline submitted blogs and research ideas.
+User: All the functions written in the workflow above can be performed.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Test Cases:
+1.Click on the Add a blog button, fill in the details and submit the blog.--If the admin approves the post, it will appear on the blog else it will not appear.--The post will appear on the blog
+2. Click a ‘Add research idea’ and select post on blog - yes--Only if the admin/faculty approves, it will be posted on the blog--It will be definitely posted on the blog.
+3.Signed in as Admin--Access to all the functions of the application.Additionally, he can add resources to the repository and approve or decline blog posts submitted by the user--Can access all functions
+4.Signed in as Faculty--In addition to accessing all the user functions, the faculty can approve or decline submitted blogs and research ideas.--Can access all functions
+5.Signed in as User--All the functions written in the workflow above can be performed.--Can access all functions
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
