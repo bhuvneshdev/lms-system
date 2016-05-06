@@ -40,9 +40,13 @@ User: All the functions written in the workflow above can be performed.
 
 Test Cases:
 1.Click on the Add a blog button, fill in the details and submit the blog.--If the admin approves the post, it will appear on the blog else it will not appear.--The post will appear on the blog
+
 2. Click a ‘Add research idea’ and select post on blog - yes--Only if the admin/faculty approves, it will be posted on the blog--It will be definitely posted on the blog.
+
 3.Signed in as Admin--Access to all the functions of the application.Additionally, he can add resources to the repository and approve or decline blog posts submitted by the user--Can access all functions
+
 4.Signed in as Faculty--In addition to accessing all the user functions, the faculty can approve or decline submitted blogs and research ideas.--Can access all functions
+
 5.Signed in as User--All the functions written in the workflow above can be performed.--Can access all functions
 
 
